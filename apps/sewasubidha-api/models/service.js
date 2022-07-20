@@ -14,15 +14,15 @@ const serviceSchema = new Schema(
     },
     providerId: {
       type: String,
-      required: [true, "providerId not provided"],
+      default: "",
     },
     status: {
       type: String,
-      enum: ["pending", "canceled", "completed"],
+      enum: ["pending", "cancelled", "completed"],
       required: [true, "Please specify status"],
     },
   },
   { timestamps: true }
 );
-const ServiceModel = mongoose.model("Service", userSchema);
+const ServiceModel = mongoose.model("Service", serviceSchema);
 module.exports = ServiceModel;
