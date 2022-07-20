@@ -5,6 +5,7 @@ var logger = require("morgan");
 const connectDB = require("./services/mongoDB");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const serviceListRouter = require("./routes/serviceList");
 
 var app = express();
 connectDB()
@@ -22,5 +23,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/service-list", serviceListRouter);
 
 module.exports = app;

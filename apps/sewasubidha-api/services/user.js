@@ -1,9 +1,4 @@
 const UserModel = require("../models/user");
-module.exports = {
-  createUser: createUser,
-  findUserByUserName: findUserByUserName,
-  findUserByIdAndUpdate: findUserByIdAndUpdate,
-};
 
 async function createUser(newUser) {
   return await UserModel.create(newUser);
@@ -16,3 +11,8 @@ async function findUserByIdAndUpdate(id, userUpdate) {
     new: true,
   }).select("-password");
 }
+module.exports = {
+  createUser,
+  findUserByUserName,
+  findUserByIdAndUpdate,
+};
