@@ -6,28 +6,29 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
+      required: [true, "username not provided "],
       immutable: true,
     },
     password: {
       type: String,
       required: true,
     },
+    fullName: {
+      type: String,
+      required: [true, "fullname not provided "],
+    },
     email: {
       type: String,
-      required: true,
+      required: [true, "email not provided"],
     },
     mobile: {
       type: String,
-      required: true,
+      required: [true, "mobile number not provided"],
     },
-    admin: {
-      type: Boolean,
-      default: false,
-    },
-    serviceProvider: {
-      type: Boolean,
-      default: false,
+    role: {
+      type: String,
+      enum: ["user", "admin", "serviceProvider"],
+      required: [true, "Please specify user role"],
     },
   },
   { timestamps: true }
