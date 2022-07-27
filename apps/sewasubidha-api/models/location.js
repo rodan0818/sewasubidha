@@ -3,13 +3,9 @@ const Schema = mongoose.Schema;
 
 const locationSchema = new Schema(
   {
-    userId: {
+    serviceProviderId: {
       type: String,
       required: true,
-    },
-    userType: {
-      type: String,
-      enum: ["user", "serviceProvider"],
     },
     country: {
       type: String,

@@ -35,7 +35,7 @@ userRouter.post(
     }
   }
 );
-
+//TODO: add authroization such that user is logged in and can edit only their profile
 userRouter.patch("/:id/update", async function (req, res, next) {
   try {
     const user = await userService.findUserByIdAndUpdate(
@@ -61,9 +61,7 @@ userRouter.post("/login", async function (req, res, next) {
   if (!isPasswordValid) {
     return res.send("Invalid Credentials");
   }
-  /**const config = require("config");
 
-const mongodbUri = config.get("database.mongoUri"); */
   const token = jwt.sign(
     { id: user._id, role: user.role },
     config.get("secretKey"),

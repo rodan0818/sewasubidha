@@ -1,18 +1,18 @@
 const ServiceModel = require("../models/service");
 
-function requestAService({ name: serviceName, requestorId }) {
+function requestAService(serviceName, requestorId) {
   return ServiceModel.create({
     name: serviceName,
     requestorId,
     status: "pending",
   });
 }
-function acceptAService({ serviceId, providerId }) {
+function acceptAService( serviceId, providerId ) {
   return ServiceModel.findOneAndUpdate(
     { _id: serviceId },
     { providerId },
     { new: true }
-  ).exec();
+  ).exec(); 
 }
 function changeServiceStatus({ serviceId }, newStatus) {
   return ServiceModel.findOneAndUpdate(

@@ -1,15 +1,16 @@
 const express = require("express");
 const locationRouter = express.Router();
 const locationService = require("../services/location");
-
-locationRouter.post("/", async (req, res, next) => {
+const authJWT = require("../middlewares/authJWT");
+//add service provider location or update them in databse
+locationRouter.post("/", authJWT.authServiceProvider, async (req, res, next) => {
   const location = await locationService.findLocationByUserId({
-    userId: req.body.userId,
+    serviceProviderId: req.user._id,
   });
   if (location) {
     const updatedLocation = await locationService.updateLocation({
       coordinates: req.body.coordinates,
-      userId: req.body.userId,
+      serviceProviderId: req.user._id,
     });
     return res.send({
       message: "Successfully Updated Location",
@@ -17,7 +18,7 @@ locationRouter.post("/", async (req, res, next) => {
     });
   } else {
     const newLocation = await locationService.createLocation({
-      userId: req.body.userId,
+      serviceProviderId: req.user._id,
       coordinates: req.body.coordinates,
     });
     return res.send({
@@ -27,11 +28,14 @@ locationRouter.post("/", async (req, res, next) => {
   }
 });
 // get nearest service provider
-locationRouter.get("/near", async (req, res, next) => {
+locationRouter.get("/near", authJWT.authUser, async (req, res, next) => {
   const serviceProviders = await locationService.findNearestServiceProvider({
     coordinates: req.body.coordinates,
     serviceName: req.body.serviceName,
   });
-  return res.send(serviceProviders);
+  const serviceProvidersId = serviceProviders.map((serviceProvider)=>{
+    return serviceProvider._id
+  })
+  return res.send(serviceProvidersId);
 });
 module.exports = locationRouter;

@@ -1,10 +1,9 @@
 const LocationModel = require("../models/location");
 
-function createLocation({ userId, userType = "user", coordinates }) {
+function createLocation({ serviceProviderId, coordinates }) {
   //TODO: userId and userTypes to be extracted from jwt token
   return LocationModel.create({
-    userId,
-    userType,
+    serviceProviderId,
     country: "Nepal",
     city: "Kathmandu",
     streetName: "Narayangopal Chowk",
@@ -14,9 +13,9 @@ function createLocation({ userId, userType = "user", coordinates }) {
   });
 }
 
-function updateLocation({ coordinates, userId }) {
+function updateLocation({ coordinates, serviceProviderId }) {
   return LocationModel.findOneAndUpdate(
-    { userId },
+    { serviceProviderId },
     { coordinates },
     { new: true }
   ).exec();
@@ -51,7 +50,7 @@ async function findNearestServiceProvider({ coordinates, serviceName }) {
 async function pickService({ serviceName, serviceProviderId }) {
   return LocationModel.findOneAndUpdate(
     {
-      userId: serviceProviderId,
+      serviceProviderId: serviceProviderId,
       userType: "serviceProvider",
     },
     {
