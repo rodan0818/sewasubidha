@@ -43,10 +43,27 @@ async function findNearestServiceProvider({ coordinates }) {
     { limit: 5 }
   );
 }
+//picked by serviceProvider
+// convention: every user should provide/create their location before picking the service
+async function pickService({ serviceName, serviceProviderId }) {
+  return LocationModel.findOneAndUpdate(
+    {
+      userId: serviceProviderId,
+      userType: "serviceProvider",
+    },
+    {
+      $addToSet: {
+        services: serviceName,
+      },
+    },
+    { upsert: false }
+  ).exec();
+}
 
 module.exports = {
   createLocation,
   updateLocation,
   findLocationByUserId,
   findNearestServiceProvider,
+  pickService,
 };

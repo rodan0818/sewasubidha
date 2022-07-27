@@ -27,6 +27,11 @@ const locationSchema = new Schema(
       type: { type: String, default: "Point" },
       coordinates: { type: [Number], default: [0, 0] },
     },
+    services: [
+      {
+        type: String,
+      },
+    ],
   },
   { timestamps: true }
 );

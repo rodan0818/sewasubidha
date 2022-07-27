@@ -2,6 +2,7 @@ const express = require("express");
 const serviceRouter = express.Router();
 const serviceManager = require("../services/service");
 const serviceListService = require("../services/serviceList");
+const locationService = require("../services/location");
 
 // get all services
 serviceRouter.get("/", async function (req, res, next) {
@@ -115,6 +116,28 @@ serviceRouter.post("/cancel", async function (req, res, next) {
     });
   } catch (error) {
     return res.status(500).send(`Error: ${error}`);
+  }
+});
+serviceRouter.post("/pick", async function (req, res, next) {
+  const serviceListing = await serviceListService.getServiceListingByName(
+    req.body.serviceName
+  );
+  if (!serviceListing) {
+    return res
+      .status(400)
+      .send(`Service ${req.body.serviceName} doesn't exists`);
+  } else {
+    const addedService = await locationService.pickService({
+      serviceName: req.body.serviceName,
+      serviceProviderId: req.body.serviceProviderId,
+    });
+    if (!addedService) {
+      return res.status(400).send({ message: "Invalid Request" });
+    }
+    return res.send({
+      message: `Successfully picked ${req.body.serviceName}`,
+      ...addedService,
+    });
   }
 });
 
