@@ -29,7 +29,8 @@ locationRouter.post("/", async (req, res, next) => {
 // get nearest service provider
 locationRouter.get("/near", async (req, res, next) => {
   const serviceProviders = await locationService.findNearestServiceProvider({
-    coordinates: [30.864058, 76.54762696],
+    coordinates: req.body.coordinates,
+    serviceName: req.body.serviceName,
   });
   return res.send(serviceProviders);
 });

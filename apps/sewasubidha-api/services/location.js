@@ -26,7 +26,7 @@ function findLocationByUserId({ userId }) {
   return LocationModel.findOne({ userId }).exec();
 }
 
-async function findNearestServiceProvider({ coordinates }) {
+async function findNearestServiceProvider({ coordinates, serviceName }) {
   return LocationModel.find(
     {
       location: {
@@ -38,6 +38,9 @@ async function findNearestServiceProvider({ coordinates }) {
         },
       },
       userType: "serviceProvider",
+      services: {
+        $elemMatch: { $eq: serviceName },
+      },
     },
     {},
     { limit: 5 }
