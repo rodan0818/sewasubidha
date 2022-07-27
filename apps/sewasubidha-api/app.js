@@ -7,6 +7,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const serviceListRouter = require("./routes/serviceList");
 const serviceRouter = require("./routes/service");
+const locationRouter = require("./routes/location");
 
 var app = express();
 connectDB()
@@ -26,5 +27,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/services-list", serviceListRouter);
 app.use("/services", serviceRouter);
+app.use("/locations", locationRouter);
 
 module.exports = app;

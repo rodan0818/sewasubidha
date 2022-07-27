@@ -10,6 +10,7 @@ serviceRouter.get("/", async function (req, res, next) {
     return res.status(500).send(`Error: ${error}`);
   }
 });
+// endpoints for admin
 serviceRouter.get("/pending", async function (req, res, next) {
   try {
     const pendingServices = await serviceManager.getServicesByStatus("pending");
@@ -38,6 +39,7 @@ serviceRouter.get("/cancelled", async function (req, res, next) {
     return res.status(500).send(`Error: ${error}`);
   }
 });
+//endpoint for user to request a service
 serviceRouter.post("/request", async function (req, res, next) {
   try {
     const newService = await serviceManager.requestAService(req.body);
@@ -49,6 +51,7 @@ serviceRouter.post("/request", async function (req, res, next) {
     return res.status(500).send(`Error: ${error}`);
   }
 });
+//endpoint for service provider to accept/complete/cancel the service
 serviceRouter.post("/accept", async function (req, res, next) {
   try {
     const service = await serviceManager.acceptAService(req.body);
@@ -77,13 +80,14 @@ serviceRouter.post("/complete", async function (req, res, next) {
         .send(`Service #${req.body.serviceId} doesn't exists`);
     }
     return res.send({
-      message: "Successfull accepted the service",
+      message: "Successfull completed the service",
       service,
     });
   } catch (error) {
     return res.status(500).send(`Error: ${error}`);
   }
 });
+// user can also cancel the service
 serviceRouter.post("/cancel", async function (req, res, next) {
   try {
     const service = await serviceManager.changeServiceStatus(

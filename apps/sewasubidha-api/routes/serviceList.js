@@ -13,7 +13,7 @@ serviceListRouter.get("/", async function (req, res, next) {
 
 serviceListRouter.post("/", async function (req, res, next) {
   try {
-    const serviceListing = serviceListService.getServiceListingByName(
+    const serviceListing = await serviceListService.getServiceListingByName(
       req.body.name
     );
     if (serviceListing) {
