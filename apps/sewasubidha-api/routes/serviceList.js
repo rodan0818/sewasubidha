@@ -2,6 +2,7 @@ const express = require("express");
 const serviceListRouter = express.Router();
 const serviceListService = require("../services/serviceList");
 
+// gives all the service listing
 serviceListRouter.get("/", async function (req, res, next) {
   try {
     const services = await serviceListService.getAllServiceList();
@@ -11,6 +12,7 @@ serviceListRouter.get("/", async function (req, res, next) {
   }
 });
 
+// create a service listing
 serviceListRouter.post("/", async function (req, res, next) {
   try {
     const serviceListing = await serviceListService.getServiceListingByName(
@@ -27,6 +29,7 @@ serviceListRouter.post("/", async function (req, res, next) {
     return res.status(500).send(`Error: ${error}`);
   }
 });
+// delete a service listing
 serviceListRouter.delete("/:name", async function (req, res, next) {
   try {
     const deletedService = await serviceListService.deleteServiceListingByName(

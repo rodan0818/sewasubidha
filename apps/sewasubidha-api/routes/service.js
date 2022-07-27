@@ -1,7 +1,9 @@
 const express = require("express");
 const serviceRouter = express.Router();
 const serviceManager = require("../services/service");
+const serviceListService = require("../services/serviceList");
 
+// get all services
 serviceRouter.get("/", async function (req, res, next) {
   try {
     const services = await serviceManager.getAllServices();
@@ -42,6 +44,14 @@ serviceRouter.get("/cancelled", async function (req, res, next) {
 //endpoint for user to request a service
 serviceRouter.post("/request", async function (req, res, next) {
   try {
+    const serviceListing = await serviceListService.getServiceListingByName(
+      req.body.name
+    );
+    if (!serviceListing) {
+      return res
+        .status(404)
+        .send(`Service name ${req.body.name} doesn't exist`);
+    }
     const newService = await serviceManager.requestAService(req.body);
     return res.send({
       message: "Successfully requested the service",
