@@ -55,11 +55,11 @@ userRouter.patch("/:id/update", async function (req, res, next) {
 userRouter.post("/login", async function (req, res, next) {
   const user = await userService.findUserByUserName(req.body.username);
   if (!user) {
-    return res.status(404).send("Invalid Credentials");
+    return res.status(401).send("Invalid Credentials");
   }
   const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
   if (!isPasswordValid) {
-    return res.send("Invalid Credentials");
+    return res.status(401).send("Invalid Credentials");
   }
 
   const token = jwt.sign(
