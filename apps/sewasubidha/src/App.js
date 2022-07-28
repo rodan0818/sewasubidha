@@ -1,7 +1,18 @@
 import "./App.css";
+import Login from "./components/Login";
+import backgroundImage from "./asset/background.jpg";
 
 function App() {
-  return <h1>Sewasubidha App</h1>;
+  return (
+    <main
+      className="App"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
+      <Login />
+    </main>
+  );
 }
 
 export default App;
