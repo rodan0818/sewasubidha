@@ -1,14 +1,24 @@
-const express = require("express");
+const express = require('express');
 const serviceRouter = express.Router();
-const serviceManager = require("../services/service");
-const serviceListService = require("../services/serviceList");
-const locationService = require("../services/location");
-const authJWT = require("../middlewares/authJWT");
+const serviceManager = require('../services/service');
+const serviceListService = require('../services/serviceList');
+const locationService = require('../services/location');
+const authJWT = require('../middlewares/authJWT');
 
 // get all services
-serviceRouter.get("/", authJWT.authAdmin, async function (req, res, next) {
+serviceRouter.get('/', authJWT.authAdmin, async function (req, res, next) {
   try {
     const services = await serviceManager.getAllServices();
+
+    return res.send(services);
+  } catch (error) {
+    return res.status(500).send(`Error: ${error}`);
+  }
+});
+//endpoint to get servicesFilterByDate
+serviceRouter.get('/date', authJWT.authAdmin, async function (req, res, next) {
+  try {
+    const services = await serviceManager.getServicesByDate(req.body);
     return res.send(services);
   } catch (error) {
     return res.status(500).send(`Error: ${error}`);
@@ -16,12 +26,12 @@ serviceRouter.get("/", authJWT.authAdmin, async function (req, res, next) {
 });
 // endpoints for admin
 serviceRouter.get(
-  "/pending",
+  '/pending',
   authJWT.authAdmin,
   async function (req, res, next) {
     try {
       const pendingServices = await serviceManager.getServicesByStatus(
-        "pending"
+        'pending'
       );
       return res.send(pendingServices);
     } catch (error) {
@@ -30,12 +40,12 @@ serviceRouter.get(
   }
 );
 serviceRouter.get(
-  "/completed",
+  '/completed',
   authJWT.authAdmin,
   async function (req, res, next) {
     try {
       const completedServices = await serviceManager.getServicesByStatus(
-        "completed"
+        'completed'
       );
       return res.send(completedServices);
     } catch (error) {
@@ -44,12 +54,12 @@ serviceRouter.get(
   }
 );
 serviceRouter.get(
-  "/cancelled",
+  '/cancelled',
   authJWT.authAdmin,
   async function (req, res, next) {
     try {
       const cancelledServices = await serviceManager.getServicesByStatus(
-        "cancelled"
+        'cancelled'
       );
       return res.send(cancelledServices);
     } catch (error) {
@@ -59,7 +69,7 @@ serviceRouter.get(
 );
 //endpoint for user to request a service
 serviceRouter.post(
-  "/request",
+  '/request',
   authJWT.authUser,
   async function (req, res, next) {
     try {
@@ -71,9 +81,12 @@ serviceRouter.post(
           .status(404)
           .send(`Service name ${req.body.name} doesn't exist`);
       }
-      const newService = await serviceManager.requestAService(req.body.serviceName, req.user._id);
+      const newService = await serviceManager.requestAService(
+        req.body.serviceName,
+        req.user._id
+      );
       return res.send({
-        message: "Successfully requested the service",
+        message: 'Successfully requested the service',
         service: newService,
       });
     } catch (error) {
@@ -83,19 +96,21 @@ serviceRouter.post(
 );
 //endpoint for service provider to accept/complete/cancel the service
 serviceRouter.post(
-  "/accept",
+  '/accept',
   authJWT.authServiceProvider,
   async function (req, res, next) {
     try {
-      
-      const service = await serviceManager.acceptAService(req.body.serviceId, req.user._id);
+      const service = await serviceManager.acceptAService(
+        req.body.serviceId,
+        req.user._id
+      );
       if (!service) {
         return res
           .status(400)
           .send(`Service Id #${req.body.serviceId} doesn't exists`);
       }
       return res.send({
-        message: "Successfull accepted the service",
+        message: 'Successfull accepted the service',
         service,
       });
     } catch (error) {
@@ -104,13 +119,13 @@ serviceRouter.post(
   }
 );
 serviceRouter.post(
-  "/complete",
+  '/complete',
   authJWT.authServiceProvider,
   async function (req, res, next) {
     try {
       const service = await serviceManager.changeServiceStatus(
         req.body,
-        "completed"
+        'completed'
       );
       if (!service) {
         return res
@@ -118,7 +133,7 @@ serviceRouter.post(
           .send(`Service #${req.body.serviceId} doesn't exists`);
       }
       return res.send({
-        message: "Successfull completed the service",
+        message: 'Successfull completed the service',
         service,
       });
     } catch (error) {
@@ -128,13 +143,13 @@ serviceRouter.post(
 );
 // user can also cancel the service
 serviceRouter.post(
-  "/cancel",
+  '/cancel',
   authJWT.authUserOrServiceProvider,
   async function (req, res, next) {
     try {
       const service = await serviceManager.changeServiceStatus(
         req.body,
-        "cancelled"
+        'cancelled'
       );
       if (!service) {
         return res
@@ -142,7 +157,7 @@ serviceRouter.post(
           .send(`Service #${req.body.serviceId} doesn't exists`);
       }
       return res.send({
-        message: "Successfull cancelled the service",
+        message: 'Successfull cancelled the service',
         service,
       });
     } catch (error) {
@@ -151,7 +166,7 @@ serviceRouter.post(
   }
 );
 serviceRouter.post(
-  "/pick",
+  '/pick',
   authJWT.authServiceProvider,
   async function (req, res, next) {
     const serviceListing = await serviceListService.getServiceListingByName(
@@ -167,7 +182,7 @@ serviceRouter.post(
         serviceProviderId: req.user._id,
       });
       if (!addedService) {
-        return res.status(400).send({ message: "Invalid Request" });
+        return res.status(400).send({ message: 'Invalid Request' });
       }
       return res.send({
         message: `Successfully picked ${req.body.serviceName}`,
