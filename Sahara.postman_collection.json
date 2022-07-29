@@ -1,0 +1,840 @@
+{
+	"info": {
+		"_postman_id": "885e0e4e-324f-415a-aa5c-4720ad6ff023",
+		"name": "Sahara",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15868873"
+	},
+	"item": [
+		{
+			"name": "sewasubidha",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"rodan0818\",\n    \"password\": \"password123\",\n    \"fullName\": \"Rodan Ramdam\",\n    \"email\": \"rodan@gmail.com\",\n    \"mobile\": \"9876456354\",\n    \"role\":\"user\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signup Admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\": \"password123\",\n    \"fullName\": \"Admin\",\n    \"email\": \"admin@gmail.com\",\n    \"mobile\": \"adminMobile\",\n    \"role\":\"admin\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signup user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"user\",\n    \"password\": \"password123\",\n    \"fullName\": \"User\",\n    \"email\": \"user@gmail.com\",\n    \"mobile\": \"userMobile\",\n    \"role\":\"user\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signup serviceProvider",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"serviceprovider\",\n    \"password\": \"password123\",\n    \"fullName\": \"ServiceProvider\",\n    \"email\": \"sp@gmail.com\",\n    \"mobile\": \"spMobile\",\n    \"role\":\"serviceProvider\"\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"rodan0818\",\n    \"password\":\"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"user\",\n    \"password\":\"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login sp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"serviceprovider\",\n    \"password\":\"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobile\": \"9876456355\",\n    \"email\": \"rodan123@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/62d79cf8c8d3f5b3980c23ff/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"62d79cf8c8d3f5b3980c23ff",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "serviceList",
+					"item": [
+						{
+							"name": "get All Services",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTExOWE0ZDIxZWIyNWZhZjE4MDAyNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU4OTIxNDM1LCJleHAiOjE2NTkwMDc4MzV9.8SCq71sY-3nCpXRP1pzH_UP-gNKAI-NJDVkOsSRP1u8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/services-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODkyNTExMCwiZXhwIjoxNjU5MDExNTEwfQ.A-rLWEZcnRyYLY-n8tK_oYwGDw4wguq7RB6-kW8pmAY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceName\": \"carpentry\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete listing by name",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/services-list/gardening",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"services-list",
+										"gardening"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "service",
+					"item": [
+						{
+							"name": "get All services",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODkyNTExMCwiZXhwIjoxNjU5MDExNTEwfQ.A-rLWEZcnRyYLY-n8tK_oYwGDw4wguq7RB6-kW8pmAY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/services",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get All pending services",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODkyNTExMCwiZXhwIjoxNjU5MDExNTEwfQ.A-rLWEZcnRyYLY-n8tK_oYwGDw4wguq7RB6-kW8pmAY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/services/pending",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"pending"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get All cancelled services",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODkyNTExMCwiZXhwIjoxNjU5MDExNTEwfQ.A-rLWEZcnRyYLY-n8tK_oYwGDw4wguq7RB6-kW8pmAY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/services/cancelled",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"cancelled"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get All completed services",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODkyNTExMCwiZXhwIjoxNjU5MDExNTEwfQ.A-rLWEZcnRyYLY-n8tK_oYwGDw4wguq7RB6-kW8pmAY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/services/completed",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"completed"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "request a service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA4NGI4ZGNiNTdkNDJmOGEyYyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU4OTI1MTEzLCJleHAiOjE2NTkwMTE1MTN9.i63-vhTpsWmvv7o2lgGVFVSWhiU8OXQIIHheigDLd1U",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceName\": \"furniture\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services/request",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accept a request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDBiNGI4ZGNiNTdkNDJmOGEyZiIsInJvbGUiOiJzZXJ2aWNlUHJvdmlkZXIiLCJpYXQiOjE2NTg5MjUxMTcsImV4cCI6MTY1OTAxMTUxN30.Cts9r311Nel0kp9LaAXvAAVYLFz3YTS85HDBiDKooU0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceId\":\"62e13983997d3318e7c06747\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services/accept",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"accept"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "complete a service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDBiNGI4ZGNiNTdkNDJmOGEyZiIsInJvbGUiOiJzZXJ2aWNlUHJvdmlkZXIiLCJpYXQiOjE2NTg5MjUxMTcsImV4cCI6MTY1OTAxMTUxN30.Cts9r311Nel0kp9LaAXvAAVYLFz3YTS85HDBiDKooU0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceId\": \"62e13983997d3318e7c06747\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services/complete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cancel a service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDBiNGI4ZGNiNTdkNDJmOGEyZiIsInJvbGUiOiJzZXJ2aWNlUHJvdmlkZXIiLCJpYXQiOjE2NTg5MjUxMTcsImV4cCI6MTY1OTAxMTUxN30.Cts9r311Nel0kp9LaAXvAAVYLFz3YTS85HDBiDKooU0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceId\": \"62e13d5b8599091348d112d1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services/cancel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pick a service to provide",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDBiNGI4ZGNiNTdkNDJmOGEyZiIsInJvbGUiOiJzZXJ2aWNlUHJvdmlkZXIiLCJpYXQiOjE2NTg5MjUxMTcsImV4cCI6MTY1OTAxMTUxN30.Cts9r311Nel0kp9LaAXvAAVYLFz3YTS85HDBiDKooU0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceName\":\"carpentry\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services/pick",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"pick"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get services filter by date",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODk4MTY0OSwiZXhwIjoxNjU5MDY4MDQ5fQ.5UYiyfnqk6ImD4IGy-KZk0A3vvYuQLeunFIsztQQtuU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"from\":\"2022-07-00\",\n    \"to\": \"2022-07-27\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/services/date",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"services",
+										"date"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "location",
+					"item": [
+						{
+							"name": "create/update location",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDBiNGI4ZGNiNTdkNDJmOGEyZiIsInJvbGUiOiJzZXJ2aWNlUHJvdmlkZXIiLCJpYXQiOjE2NTg5MjUxMTcsImV4cCI6MTY1OTAxMTUxN30.Cts9r311Nel0kp9LaAXvAAVYLFz3YTS85HDBiDKooU0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coordinates\":[40.564058, 86.44762696]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/locations",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"locations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get nearest service provider",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA4NGI4ZGNiNTdkNDJmOGEyYyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU4OTI1MTEzLCJleHAiOjE2NTkwMTE1MTN9.i63-vhTpsWmvv7o2lgGVFVSWhiU8OXQIIHheigDLd1U",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coordinates\": [30.864058, 76.54762696],\n    \"serviceName\":\"furniture\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/locations/near",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"locations",
+										"near"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

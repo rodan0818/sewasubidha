@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useRef, useState, useEffect, useContext } from "react";
 
 import axios from "../api/axios";
@@ -39,7 +40,6 @@ const Login = () => {
       setPassword("");
       setSuccess(true);
     } catch (err) {
-      console.log(err);
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
