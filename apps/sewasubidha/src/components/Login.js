@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useRef, useState, useEffect, useContext } from "react";
-
+import { useRef, useState, useEffect } from "react";
 import axios from "../api/axios";
+import { useNavigate } from "react-router-dom";
 const LOGIN_URL = "/users/login";
 
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
-
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -56,13 +56,7 @@ const Login = () => {
   return (
     <>
       {success ? (
-        <section>
-          <h1>You are logged in!</h1>
-          <br />
-          <p>
-            <a href="#">Go to Home</a>
-          </p>
-        </section>
+        navigate("/home", { replace: true })
       ) : (
         <section>
           <p

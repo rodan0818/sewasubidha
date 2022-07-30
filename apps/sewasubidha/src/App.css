@@ -14,7 +14,6 @@ html {
 
 body {
   min-height: 100vh;
-  background-image: "../public/background.jpg";
 }
 
 .App {
@@ -119,4 +118,13 @@ button {
 
 .line {
   display: inline-block;
+}
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+  background-color: #1b1b1b;
 }
