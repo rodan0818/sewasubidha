@@ -2,7 +2,7 @@ import "../App.css";
 import { React, useContext } from "react";
 import { UserContext } from "../App";
 function Homepage() {
-  const [user, setUser] = useContext(UserContext);
+  const user = useContext(UserContext)[0];
   console.log(user);
   return (
     <>
