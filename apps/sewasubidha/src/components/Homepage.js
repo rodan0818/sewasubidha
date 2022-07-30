@@ -1,10 +1,17 @@
 import "../App.css";
+import { React, useContext } from "react";
+import { UserContext } from "../App";
 function Homepage() {
-  console.log("homepage");
+  const [user, setUser] = useContext(UserContext);
+  console.log(user);
   return (
     <>
       <main className="homepage">
-        <h1>Homepage</h1>
+        {user.accessToken ? (
+          <h1>UserId:{user?.userData?.userId}</h1>
+        ) : (
+          <h1>404 not found</h1>
+        )}
       </main>
     </>
   );

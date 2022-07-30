@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
+import backgroundImage from "../asset/background.jpg";
+
 const LOGIN_URL = "/users/login";
 
 const Login = () => {
@@ -12,6 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  const [user, setUser] = useContext(UserContext);
   useEffect(() => {
     userRef.current.focus();
   }, []);
@@ -34,8 +38,8 @@ const Login = () => {
       );
       const userData = response.data.user;
       const accessToken = response.data.accessToken;
-      console.log({ userData, accessToken });
       //removing the stored username and password
+      setUser({ userData, accessToken });
       setUsername("");
       setPassword("");
       setSuccess(true);
@@ -54,7 +58,12 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div
+      className="loginPage"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
       {success ? (
         navigate("/home", { replace: true })
       ) : (
@@ -98,7 +107,7 @@ const Login = () => {
           </p>
         </section>
       )}
-    </>
+    </div>
   );
 };
 
