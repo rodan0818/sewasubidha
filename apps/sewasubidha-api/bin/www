@@ -36,7 +36,8 @@ server.on("listening", onListening);
 io.on("connection", (socket) => {
   console.log("Socket connection established");
   socket.onAny((event, data) => {
-    console.log(event, data);
+    const serviceProviderId = event;
+    io.emit(serviceProviderId, data);
   });
 });
 
