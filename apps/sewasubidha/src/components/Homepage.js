@@ -41,7 +41,8 @@ function Homepage() {
         return requestServiceProviderById(
           serviceProviderList[0],
           user?.userData?.userId,
-          serviceIdReceived
+          serviceIdReceived,
+          serviceSelected
         );
       })
       .catch((err) => {

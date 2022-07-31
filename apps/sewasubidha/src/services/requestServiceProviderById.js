@@ -5,7 +5,8 @@ const socket = io.connect("http://localhost:3001");
 export default function requestServiceProviderById(
   serviceProviderId,
   userId,
-  serviceId
+  serviceId,
+  serviceName
 ) {
-  socket.emit(`${serviceProviderId}`, { userId, serviceId });
+  socket.emit(`${serviceProviderId}`, { userId, serviceId, serviceName });
 }
