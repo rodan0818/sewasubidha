@@ -13,10 +13,13 @@ function Homepage() {
       setServiceListings(responseData);
     };
     getResponseData();
+    setServiceSelected("");
   }, []);
+  const [serviceSelected, setServiceSelected] = useState("");
 
-  // console.log(user);
-
+  async function onServiceSelect(serviceName) {
+    setServiceSelected(serviceName);
+  }
   return (
     <>
       <main className="homepage">
@@ -24,10 +27,42 @@ function Homepage() {
           <h1>404 not found</h1>
         ) : (
           <>
-            <h2 className="pageHeading">Select a service</h2>
-            {serviceListings.map((serviceListObject, index) => {
-              return <button key={index}>{serviceListObject?.name}</button>;
-            })}
+            {serviceSelected === "" ? (
+              <div className="serviceSelector">
+                <h1 className="pageHeading">Select a service</h1>
+                {serviceListings.map((serviceListObject, index) => {
+                  return (
+                    <button
+                      key={index}
+                      className="serviceNameCard"
+                      onClick={() => {
+                        onServiceSelect(serviceListObject?.name);
+                      }}
+                    >
+                      {serviceListObject?.name}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="serviceUi">
+                <button
+                  onClick={() => {
+                    setServiceSelected("");
+                  }}
+                  className="goToHome"
+                  style={{
+                    background: "initial",
+                    border: "initial",
+                    color: "#C7C7C7",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Home
+                </button>
+                <h1>{serviceSelected}</h1>
+              </div>
+            )}
             <Link
               to={"/"}
               onClick={() => {

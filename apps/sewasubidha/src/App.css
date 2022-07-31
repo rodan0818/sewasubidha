@@ -135,6 +135,18 @@ button {
   right: 10%;
 }
 .pageHeading {
+  position: relative;
+  bottom: 100px;
+  right: 100px;
+}
+.serviceNameCard:hover {
+  transform: scale(1.1);
+}
+.serviceNameCard {
+  display: block;
+}
+.goToHome {
   position: absolute;
+  left: 10%;
   top: 10%;
 }
