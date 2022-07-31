@@ -716,7 +716,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1ODk4MTY0OSwiZXhwIjoxNjU5MDY4MDQ5fQ.5UYiyfnqk6ImD4IGy-KZk0A3vvYuQLeunFIsztQQtuU",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEzMDA0NGI4ZGNiNTdkNDJmOGEyOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1OTI0ODA5NSwiZXhwIjoxNjU5MzM0NDk1fQ.8JagMUwgFmABGkx8jjarpbNwDGle2gLA9uU0xiKLYlA",
 											"type": "string"
 										}
 									]
@@ -725,7 +725,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"from\":\"2022-07-00\",\n    \"to\": \"2022-07-27\"\n}",
+									"raw": "{\n    \"from\":\"2022-7-27\",\n    \"to\": \"2022-8-28\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
