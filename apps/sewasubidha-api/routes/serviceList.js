@@ -5,7 +5,6 @@ const authJWT = require("../middlewares/authJWT");
 
 // gives all the service listing
 serviceListRouter.get("/", async function (req, res, next) {
-  console.log(req.user);
   try {
     const services = await serviceListService.getAllServiceList();
     return res.send(services);
@@ -27,7 +26,7 @@ serviceListRouter.post("/", authJWT.authAdmin, async function (req, res, next) {
     }
     await serviceListService.createServiceListing({
       name: req.body.serviceName,
-      adminId: req.user._id
+      adminId: req.user._id,
     });
     return res.send("Successfully created service");
   } catch (error) {
