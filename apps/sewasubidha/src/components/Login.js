@@ -4,6 +4,7 @@ import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 import backgroundImage from "../asset/background.jpg";
+import { AxiosError } from "axios";
 
 const LOGIN_URL = "/users/login";
 
@@ -16,6 +17,7 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
   const setUser = useContext(UserContext)[1];
+
   useEffect(() => {
     userRef.current.focus();
   }, []);
@@ -38,6 +40,12 @@ const Login = () => {
       );
       const userData = response.data.user;
       const accessToken = response.data.accessToken;
+      //only user can log
+      if (userData?.role !== "user") {
+        throw new AxiosError(null, null, null, null, {
+          status: 401,
+        });
+      }
       //removing the stored username and password
       setUser({ userData, accessToken });
       setUsername("");
