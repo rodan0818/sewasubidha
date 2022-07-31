@@ -3,6 +3,9 @@ import { React, useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
 import { Link } from "react-router-dom";
 import getServicesListing from "../services/getServiceListing";
+import getNearServiceProvider from "../services/getNearServiceProvider";
+import requestForService from "../services/requestForService";
+import requestServiceProviderById from "../services/requestServiceProviderById";
 function Homepage() {
   const [user, setUser] = useContext(UserContext);
   const [serviceListings, setServiceListings] = useState([]);
@@ -16,10 +19,50 @@ function Homepage() {
     setServiceSelected("");
   }, []);
   const [serviceSelected, setServiceSelected] = useState("");
-
+  const [location, setLocation] = useState({});
+  const [serviceProviders, setServiceProviders] = useState([]);
+  const [finding, setFinding] = useState(false);
+  const [serviceId, setServiceId] = useState("");
+  async function findServiceProvider() {
+    let serviceIdReceived = "";
+    setFinding(true);
+    return requestForService(serviceSelected, user.accessToken)
+      .then((serviceIdGot) => {
+        serviceIdReceived = serviceIdGot;
+        setServiceId(serviceIdGot);
+        return getNearServiceProvider(
+          user.accessToken,
+          [location.latitude, location.longitude],
+          serviceSelected
+        );
+      })
+      .then((serviceProviderList) => {
+        setServiceProviders(serviceProviderList);
+        return requestServiceProviderById(
+          serviceProviderList[0],
+          user?.userData?.userId,
+          serviceIdReceived
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   async function onServiceSelect(serviceName) {
     setServiceSelected(serviceName);
   }
+  function getCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const coordinates = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+        setLocation(coordinates);
+      });
+    }
+  }
+
   return (
     <>
       <main className="homepage">
@@ -36,6 +79,7 @@ function Homepage() {
                       key={index}
                       className="serviceNameCard"
                       onClick={() => {
+                        getCurrentLocation();
                         onServiceSelect(serviceListObject?.name);
                       }}
                     >
@@ -60,7 +104,14 @@ function Homepage() {
                 >
                   Home
                 </button>
-                <h1>{serviceSelected}</h1>
+                <h1 className="serviceNameHolder">{serviceSelected}</h1>
+                {finding ? <p>Finding service provider...</p> : <></>}
+                <button
+                  className="findServiceProviderButton"
+                  onClick={findServiceProvider}
+                >
+                  Find service provider
+                </button>
               </div>
             )}
             <Link

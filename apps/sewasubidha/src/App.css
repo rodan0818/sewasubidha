@@ -150,3 +150,13 @@ button {
   left: 10%;
   top: 10%;
 }
+.serviceNameHolder {
+  position: absolute;
+  top: 10%;
+  left: 45%;
+}
+.findServiceProviderButton {
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+}
