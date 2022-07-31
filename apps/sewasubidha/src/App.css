@@ -128,3 +128,13 @@ button {
   padding: 1rem 0.5rem;
   background-color: #1b1b1b;
 }
+
+.logoutLink {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+.pageHeading {
+  position: absolute;
+  top: 10%;
+}
