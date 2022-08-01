@@ -17,3 +17,11 @@ The backend app includes most of the apis. The frontend app hasn't utilized all 
 ### `Users App`
 
 - User can login, find list of services available and go to the specific service section and search for the nearest service provider and request the service to that service provider and gets acknowledged with provider details if the service has been accepted
+
+### `TODOS and Improvements`
+
+- Admin page can be made to consume admin apis with the help of React Admin library
+- Service Provider app can have a login page with authentication and more services can be added to operation
+- The major feature that can be added to the user app and provider app is to show map of the provider and user implementing the React Leaflet
+- Persistent login session can be added to all of the apps using local storage
+- Instead of only requesting the single provider, if the provider ignores the request it can be again routed to another provider (to do this, when user acknowledges that the request has been ignored, requesting to another provider like before) also routing the service request if the provider hasn't responded to the request (this can be done just by simple timeout logic and then redoing the provider request but with different service provider)
