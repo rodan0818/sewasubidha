@@ -1,11 +1,14 @@
 import "../App.css";
-import { React, useContext, useEffect, useState } from "react";
+import { React, useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../App";
 import { Link } from "react-router-dom";
 import getServicesListing from "../services/getServiceListing";
 import getNearServiceProvider from "../services/getNearServiceProvider";
 import requestForService from "../services/requestForService";
 import requestServiceProviderById from "../services/requestServiceProviderById";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:3001");
 function Homepage() {
   const [user, setUser] = useContext(UserContext);
   const [serviceListings, setServiceListings] = useState([]);
@@ -17,12 +20,23 @@ function Homepage() {
     };
     getResponseData();
     setServiceSelected("");
+    setProviderResponse(false);
+    receivedProviderResponse.current = {};
   }, []);
   const [serviceSelected, setServiceSelected] = useState("");
   const [location, setLocation] = useState({});
   const [serviceProviders, setServiceProviders] = useState([]);
   const [finding, setFinding] = useState(false);
   const [serviceId, setServiceId] = useState("");
+  const [notFound, setNotFound] = useState(false);
+  const [providerResponse, setProviderResponse] = useState(false);
+  const receivedProviderResponse = useRef({});
+  socket.on(serviceId, (payload) => {
+    receivedProviderResponse.current = payload;
+    setProviderResponse(true);
+    setFinding(false);
+    // setProviderResponse(true);
+  });
   async function findServiceProvider() {
     let serviceIdReceived = "";
     setFinding(true);
@@ -37,6 +51,10 @@ function Homepage() {
         );
       })
       .then((serviceProviderList) => {
+        if (serviceProviderList?.length === 0) {
+          setNotFound(true);
+          setFinding(false);
+        }
         setServiceProviders(serviceProviderList);
         return requestServiceProviderById(
           serviceProviderList[0],
@@ -94,6 +112,9 @@ function Homepage() {
                 <button
                   onClick={() => {
                     setServiceSelected("");
+                    setNotFound(false);
+                    receivedProviderResponse.current = {};
+                    setProviderResponse(false);
                   }}
                   className="goToHome"
                   style={{
@@ -107,6 +128,33 @@ function Homepage() {
                 </button>
                 <h1 className="serviceNameHolder">{serviceSelected}</h1>
                 {finding ? <p>Finding service provider...</p> : <></>}
+                {notFound ? (
+                  <p>
+                    No service provider available for {serviceSelected} service
+                  </p>
+                ) : (
+                  <></>
+                )}
+                {providerResponse ? (
+                  <>
+                    <p>
+                      {receivedProviderResponse.current.responseData.message}
+                    </p>
+                    <p>
+                      Provider Name: {receivedProviderResponse.current.fullName}
+                    </p>
+                    <p>Mobile: {receivedProviderResponse.current.mobile}</p>
+                    <p>
+                      Provider ID:
+                      {
+                        receivedProviderResponse.current.responseData.service
+                          .providerId
+                      }
+                    </p>
+                  </>
+                ) : (
+                  <></>
+                )}
                 <button
                   className="findServiceProviderButton"
                   onClick={findServiceProvider}
