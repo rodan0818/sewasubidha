@@ -1,7 +1,7 @@
 const LocationModel = require("../models/location");
 
 function createLocation({ serviceProviderId, coordinates }) {
-  //TODO: userId and userTypes to be extracted from jwt token
+  //TODO: country, city and street name to be added from api call
   return LocationModel.create({
     serviceProviderId,
     country: "Nepal",
