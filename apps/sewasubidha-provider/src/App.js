@@ -1,39 +1,63 @@
 import "./App.css";
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
+import { db } from "./db";
+import acceptRequest from "./services/respondToRequest";
 const socket = io.connect("http://localhost:3001");
+
 function App() {
   const [incomingService, setIncomingService] = useState([]);
   const [newService, setNewService] = useState({});
+  async function acceptServiceRequest(serviceId) {
+    acceptRequest(serviceId, db.acessToken).then((responseData) => {
+      console.log(`Request accepted SID:${serviceId}`);
+      console.log(incomingService);
+      console.log(responseData);
+      const newIncomingServices = incomingService.filter(
+        (service) => service.serviceId !== serviceId
+      );
+      setIncomingService(newIncomingServices);
+      socket.emit(serviceId, {
+        responseData,
+        mobile: db.mobile,
+        fullName: db.fullName,
+      });
+      alert(responseData.message);
+    });
+  }
   useEffect(() => {
     if (Object.keys(newService).length !== 0) {
       setIncomingService((oldValues) => [newService, ...oldValues]);
       setNewService({});
     }
   }, [newService]);
-  //hardcoded service prvider Id
-  socket.on("62e1300b4b8dcb57d42f8a2f", (payload) => {
-    // setIncomingService((prevState) => {
-    //   return [...prevState, payload];
-    // });
-    // setIncomingService((oldValues) => [payload, ...oldValues]);
+  //hardcoded service provider Id
+  socket.on(db.serviceProviderId, (payload) => {
     setNewService(payload);
   });
-  console.log(incomingService);
   return (
     <>
       {incomingService.length > 0 ? (
-        <div>
+        <main className="App m-3">
           {incomingService.map((service, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="m-3 p-3 border border-primary">
                 <h3>ServiceName: {service.serviceName}</h3>
                 <p>UserId: {service.userId}</p>
                 <p>ServiceId: {service.serviceId}</p>
+                <button
+                  className="btn btn-success m-3"
+                  onClick={() => {
+                    acceptServiceRequest(service.serviceId);
+                  }}
+                >
+                  Accept
+                </button>{" "}
+                <button className="btn btn-danger m-3">Ignore</button>
               </div>
             );
           })}
-        </div>
+        </main>
       ) : (
         <></>
       )}
